@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pygeo2d"
+version = "0.0.1"
+description = "Library for two-dimensional geometry in Python"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ajxu2/pygeo2d"
+"Bug Tracker" = "https://github.com/ajxu2/pygeo2d/issues"
