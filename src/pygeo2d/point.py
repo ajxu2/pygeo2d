@@ -37,19 +37,25 @@ class Point:
         """
         Add a Point to another Point.
         """
-        return Point(self.x + other.x, self.y + other.y)
+        if isinstance(other, Point):
+            return Point(self.x + other.x, self.y + other.y)
+        return NotImplemented
 
     def __sub__(self, other):
         """
         Subtract a Point from this Point.
         """
-        return Point(self.x - other.x, self.y - other.y)
+        if isinstance(other, Point):
+            return Point(self.x - other.x, self.y - other.y)
+        return NotImplemented
 
     def __mul__(self, scale):
         """
         Multiply each coordinate of this point by a factor.
         """
-        if not real_finite(scale):
+        if not isinstance(scale, Real):
+            return NotImplemented
+        if not isfinite(scale):
             raise TypeError("scale factor must be a real number")
         return Point(self.x * scale, self.y * scale)
     __rmul__ = __mul__
@@ -58,7 +64,9 @@ class Point:
         """
         Divide each coordinate of this point by a factor.
         """
-        if not real_finite(scale):
+        if not isinstance(scale, Real):
+            return NotImplemented
+        if not isfinite(scale):
             raise TypeError("scale factor must be a real number")
         return Point(self.x / scale, self.y / scale)
 
@@ -70,9 +78,9 @@ class Point:
 
     def __pos__(self):
         """
-        Return this point (???).
+        Return a point identical to this point.
         """
-        return self
+        return Point(self.x, self.y)
         
     def __abs__(self):
         """
