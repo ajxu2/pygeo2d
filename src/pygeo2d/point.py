@@ -1,5 +1,5 @@
 from numbers import Real
-from math import isfinite, sqrt
+from math import isfinite, sqrt, isclose
 
 def real_finite(x):
     return isinstance(x, Real) and isfinite(x)
@@ -30,8 +30,25 @@ class Point:
         """
         if not (real_finite(x) and real_finite(y)):
             raise TypeError("point coordinates must be real numbers")
-        self.x = x
-        self.y = y
+        self._x = x
+        self._y = y
+
+    """
+    Properties of this Point, namely the x and y coordinates.
+    """
+    @property
+    def x(self):
+        """
+        The x-coordinate of this Point.
+        """
+        return self._x
+
+    @property
+    def y(self):
+        """
+        The y-coordinate of this Point.
+        """
+        return self._y
 
     def __add__(self, other):
         """
@@ -99,3 +116,10 @@ class Point:
         Return a readable representation of this Point.
         """
         return f"({self.x}, {self.y})"
+
+    def __eq__(self, other):
+        """
+        Test for equality. (Note that since our coordinates can be floats,
+        we use the isclose function in the math module.)
+        """
+        return isclose(self.x, other.x) and isclose(self.y, other.y)
