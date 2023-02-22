@@ -123,3 +123,30 @@ class Point:
         we use the isclose function in the math module.)
         """
         return isclose(self.x, other.x) and isclose(self.y, other.y)
+
+def dist(p1, p2):
+    """
+    Return the distance between two points, p1 and p2.
+    """
+    if not isinstance(p1, Point) or not isinstance(p2, Point):
+        raise TypeError("arguments must be Points")
+    return abs(p2-p1)
+
+def dot(p1, p2):
+    """
+    Return the dot product of the two vectors p1 and p2.
+    """
+    if not isinstance(p1, Point) or not isinstance(p2, Point):
+        raise TypeError("arguments must be Points")
+    return p1.x * p2.x + p1.y * p2.y
+
+def cross(p1, p2):
+    """
+    Return the cross product of the two vectors p1 and p2 as a scalar.
+    Specifically, the absolute value of this result is the magnitude of the
+    cross product. A positive sign indicates that it points upwards from the
+    x-y plane, while a negative sign indicates the opposite.
+    """
+    if not isinstance(p1, Point) or not isinstance(p2, Point):
+        raise TypeError("arguments must be Points")
+    return p1.x * p2.y - p2.x * p1.y

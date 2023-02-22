@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pygeo2d"
-version = "0.0.3"
+version = "0.0.4"
 description = "Library for two-dimensional geometry in Python"
 readme = "README.md"
 requires-python = ">=3.7"
