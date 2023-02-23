@@ -1,5 +1,6 @@
 from pygeo2d import *
 from math import isclose
+from random import uniform
 
 def test_point():
     """
@@ -20,3 +21,33 @@ def test_point():
     assert isclose(dist(a, b), 5)
     assert isclose(dot(a, b), 22)
     assert isclose(cross(a, b), -26)
+
+def test_line():
+    """
+    test the functionalities of the Line class
+    """
+    a = Line(Point(0, 0), Point(1, 1))
+    b = Line(Point(1, 4), Point(3, 0))
+    assert intersect(a, b) == Point(2, 2)
+
+def test_line_ceva():
+    """
+    test Ceva's theorem
+    """
+    for i in range(1000):
+        # First, select 3 random points as our triangle.
+        A = Point(uniform(-10, 10), uniform(-10, 10))
+        B = Point(uniform(-10, 10), uniform(-10, 10))
+        C = Point(uniform(-10, 10), uniform(-10, 10))
+        # Next, select a random point which the three lines will concur at.
+        P = Point(uniform(-10, 10), uniform(-10, 10))
+        # Draw the cevians.
+        a = Line(A, P)
+        b = Line(B, P)
+        c = Line(C, P)
+        # Intersect cevians with sides of triangle.
+        D = intersect(a, Line(B, C))
+        E = intersect(b, Line(A, C))
+        F = intersect(c, Line(A, B))
+        # Check Ceva's!
+        assert isclose(dist(A,F)/dist(F,B)*dist(B,D)/dist(D,C)*dist(C,E)/dist(E,A), 1)
