@@ -1,4 +1,5 @@
 from .point import Point
+from math import isclose
 
 class Line:
     """
@@ -9,6 +10,8 @@ class Line:
     >>> a = Line(Point(0, 0), Point(1, 1))
     >>> print(a)
     -x + y + 0 = 0
+    >>> Point(2.4, 2.4) in a
+    True
     >>> b = Line(Point(1, 4), Point(3, 0))
     >>> print(intersect(a, b))
     (2, 2)
@@ -38,6 +41,14 @@ class Line:
         """
         # TODO: make representation prettier
         return f"({self._a}x) + ({self._b}y) + ({self._c}) = 0"
+
+    def __contains__(self, pt):
+        """
+        Returns True iff pt is on this Line.
+        """
+        if not isinstance(pt, Point):
+            raise TypeError("argument must be Point")
+        return isclose(self._a * pt.x + self._b * pt.y + self._c, 0)
 
 def det(a, b, c, d): return a*d - b*c # determinant
 

@@ -27,6 +27,7 @@ def test_line():
     test the functionalities of the Line class
     """
     a = Line(Point(0, 0), Point(1, 1))
+    assert Point(2.4, 2.4) in a
     b = Line(Point(1, 4), Point(3, 0))
     assert intersect(a, b) == Point(2, 2)
 
@@ -51,3 +52,7 @@ def test_line_ceva():
         F = intersect(c, Line(A, B))
         # Check Ceva's!
         assert isclose(dist(A,F)/dist(F,B)*dist(B,D)/dist(D,C)*dist(C,E)/dist(E,A), 1)
+
+def test_circle():
+    a = Circle(Point(0, 0), 5)
+    assert Point(3, -4) in a
