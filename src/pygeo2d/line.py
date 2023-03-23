@@ -29,37 +29,44 @@ class Line:
         self._b = p2.x - p1.x
         self._c = -self._a * p1.x - self._b * p1.y
 
+    @property
+    def a(self):
+        return self._a
+
+    @property
+    def b(self):
+        return self._b
+    
+    @property
+    def c(self):
+        return self._c
+
     def __repr__(self):
         """
         Return a representation of this Line.
         """
-        return f"Line(a={self._a}, b={self._b}, c={self._c})"
+        return f"Line(a={self.a}, b={self.b}, c={self.c})"
 
     def __str__(self):
         """
         Return a readable representation of this Line.
         """
         # TODO: make representation prettier
-        return f"({self._a}x) + ({self._b}y) + ({self._c}) = 0"
+        return f"({self.a}x) + ({self.b}y) + ({self.c}) = 0"
 
     def __contains__(self, pt):
         """
         Returns True iff pt is on this Line.
         """
-        if not isinstance(pt, Point):
-            raise TypeError("argument must be Point")
-        return isclose(self._a * pt.x + self._b * pt.y + self._c, 0)
+        return isclose(self.a * pt.x + self.b * pt.y + self.c, 0)
 
-def det(a, b, c, d): return a*d - b*c # determinant
-
-def intersect(l1, l2):
-    """
-    Return the intersection point of two lines.
-    """
-    if not isinstance(l1, Line) or not isinstance(l2, Line):
-        raise TypeError("arguments must be Lines")
-    # https://cp-algorithms.com/geometry/lines-intersection.html
-    return Point(
-        -det(l1._c, l1._b, l2._c, l2._b)/det(l1._a, l1._b, l2._a, l2._b),
-        -det(l1._a, l1._c, l2._a, l2._c)/det(l1._a, l1._b, l2._a, l2._b),
-        )
+    def intersect(self, l2):
+        """
+        Return the intersection of this line and l2.
+        """
+        # TODO: handle parallel, concurrent lines
+        det = lambda a, b, c, d: a*d - b*c
+        return Point(
+            -det(self.c, self.b, l2.c, l2.b)/det(self.a, self.b, l2.a, l2.b),
+            -det(self.a, self.c, l2.a, l2.c)/det(self.a, self.b, l2.a, l2.b),
+            )

@@ -124,29 +124,23 @@ class Point:
         """
         return isclose(self.x, other.x) and isclose(self.y, other.y)
 
-def dist(p1, p2):
-    """
-    Return the distance between two points, p1 and p2.
-    """
-    if not isinstance(p1, Point) or not isinstance(p2, Point):
-        raise TypeError("arguments must be Points")
-    return abs(p2-p1)
+    def dist(self, p2):
+        """
+        Return the distance to the point p2.
+        """
+        return abs(p2-self)
 
-def dot(p1, p2):
-    """
-    Return the dot product of the two vectors p1 and p2.
-    """
-    if not isinstance(p1, Point) or not isinstance(p2, Point):
-        raise TypeError("arguments must be Points")
-    return p1.x * p2.x + p1.y * p2.y
+    def dot(self, p2):
+        """
+        Return the dot product of this point and p2.
+        """
+        return self.x * p2.x + self.y * p2.y
 
-def cross(p1, p2):
-    """
-    Return the cross product of the two vectors p1 and p2 as a scalar.
-    Specifically, the absolute value of this result is the magnitude of the
-    cross product. A positive sign indicates that it points upwards from the
-    x-y plane, while a negative sign indicates the opposite.
-    """
-    if not isinstance(p1, Point) or not isinstance(p2, Point):
-        raise TypeError("arguments must be Points")
-    return p1.x * p2.y - p2.x * p1.y
+    def cross(self, p2):
+        """
+        Return the cross product of the two vectors p1 and p2 as a scalar.
+        Specifically, the absolute value of this result is the magnitude of the
+        cross product. A positive sign indicates that it points upwards from the
+        x-y plane, while a negative sign indicates the opposite.
+        """
+        return self.x * p2.y - p2.x * self.y

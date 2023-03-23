@@ -55,4 +55,7 @@ def test_line_ceva():
 
 def test_circle():
     a = Circle(Point(0, 0), 5)
+    #assert intersect(Line(Point(0, 6), Point(1, 6)), a) == []
+    #assert intersect(Line(Point(0, 5), Point(1, 5)), a) == [Point(0, 5)]
+    #assert intersect(Line(Point(0, 0), Point(1, 0)), a) == [Point(-5, 0), Point(5, 0)]
     assert Point(3, -4) in a

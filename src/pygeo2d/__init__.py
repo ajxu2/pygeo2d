@@ -1,5 +1,6 @@
-from .point import Point, dist, dot, cross
-from .line import Line, intersect
+from .point import Point
+from .line import Line
 from .circle import Circle
+from .util import dist, intersect, dot, cross
 
-__all__ = ["Point", "dist", "dot", "cross", "Line", "intersect", "Circle"]
+__all__ = ["Point", "Line", "Circle", "dist", "intersect", "dot", "cross"]
