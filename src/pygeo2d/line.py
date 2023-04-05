@@ -25,6 +25,8 @@ class Line:
             raise TypeError("arguments must be Points")
         # https://cp-algorithms.com/geometry/segment-to-line.html
         # line written in form ax + by + c = 0
+        self._p1 = p1
+        self._p2 = p2
         self._a = p1.y - p2.y
         self._b = p2.x - p1.x
         self._c = -self._a * p1.x - self._b * p1.y
@@ -41,11 +43,20 @@ class Line:
     def c(self):
         return self._c
 
+    @property
+    def p1(self):
+        return self._p1
+    
+    @property
+    def p2(self):
+        return self._p2
+    
+
     def __repr__(self):
         """
         Return a representation of this Line.
         """
-        return f"Line(a={self.a}, b={self.b}, c={self.c})"
+        return f"Line(p1={self.p1}, p2={self.p2})"
 
     def __str__(self):
         """

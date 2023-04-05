@@ -54,8 +54,8 @@ def test_line_ceva():
         assert isclose(dist(A,F)/dist(F,B)*dist(B,D)/dist(D,C)*dist(C,E)/dist(E,A), 1)
 
 def test_circle():
-    a = Circle(Point(0, 0), 5)
-    #assert intersect(Line(Point(0, 6), Point(1, 6)), a) == []
-    #assert intersect(Line(Point(0, 5), Point(1, 5)), a) == [Point(0, 5)]
-    #assert intersect(Line(Point(0, 0), Point(1, 0)), a) == [Point(-5, 0), Point(5, 0)]
-    assert Point(3, -4) in a
+    a = Circle(Point(3, 4), 5)
+    assert intersect(Line(Point(0, 10), Point(1, 10)), a) == []
+    assert intersect(Line(Point(0, 9), Point(1, 9)), a) == [Point(3, 9)]
+    assert intersect(Line(Point(0, 0), Point(1, 0)), a) == [Point(6, 0), Point(0, 0)]
+    assert Point(0, 0) in a

@@ -1,4 +1,5 @@
 from .point import Point
+from .line import Line
 from .util import dist
 from numbers import Real
 from math import isfinite, isclose, sqrt
@@ -60,7 +61,6 @@ class Circle:
         """
         return isclose(dist(pt, self.center), self.radius)
 
-    # currently does not work, do not attempt to use
     def intersect(self, l):
         """
         Calculate the intersection point(s) between this Circle and a Line.
@@ -68,17 +68,13 @@ class Circle:
         # https://cp-algorithms.com/geometry/circle-line-intersection.html
         # translate circle and line to (0, 0)
         r = self.radius
-        p1 = Point(-l.c/l.a, 0)
-        p2 = Point(0, -l.c/l.b) # two points on the line
-        p1 -= self.center
-        p2 -= self.center # translate
-        nl = Line(p1, p2) # new line
+        nl = Line(l.p1 - self.center, l.p2 - self.center) # new line
         d0 = abs(nl.c) / sqrt(nl.a*nl.a + nl.b*nl.b) # shortest distance from line to origin
         x0 = -nl.a*nl.c / (nl.a*nl.a + nl.b*nl.b)
         y0 = -nl.b*nl.c / (nl.a*nl.a + nl.b*nl.b)
         if isclose(d0, r):
             # 1 solution
-            return [Point(x0, y0)]
+            return [Point(x0, y0) + self.center]
         elif d0 > r:
             # 0 solutions
             return []
@@ -89,4 +85,4 @@ class Circle:
         ay = y0 - nl.a * m
         bx = x0 - nl.b * m
         by = y0 + nl.a * m
-        return [Point(ax, ay), Point(bx, by)]
+        return [Point(ax, ay) + self.center, Point(bx, by) + self.center]
