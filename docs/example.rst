@@ -32,7 +32,7 @@ First, we can make a function that does one test of Ceva's using random points:
 
         # Check Ceva's!
         # If Ceva's Theorem is true (which it is), the following should always be True.
-        return isclose(dist(A,F)/dist(F,B)*dist(B,D)/dist(D,C)*dist(C,E)/dist(E,A))
+        return isclose(dist(A,F)/dist(F,B)*dist(B,D)/dist(D,C)*dist(C,E)/dist(E,A), 1)
 
 Now, let's just run that function some large number of times:
 
