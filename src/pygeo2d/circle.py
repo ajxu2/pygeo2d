@@ -44,7 +44,7 @@ class Circle:
         """
         Return a representation of this Circle.
         """
-        return f"Circle(center={self.center}, radius={self.radius})"
+        return f"Circle(center={repr(self.center)}, radius={self.radius})"
 
     def __str__(self):
         """

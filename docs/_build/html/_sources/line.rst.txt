@@ -41,7 +41,7 @@ Line
 
         >>> a = Line(Point(0, 0), Point(1, 1))
         >>> a
-        Line(p1=(0, 0), p2=(1, 1))
+        Line(p1=Point(0, 0), p2=Point(1, 1))
 
     .. method:: __str__()
 

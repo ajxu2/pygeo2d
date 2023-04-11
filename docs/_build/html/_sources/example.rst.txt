@@ -32,7 +32,7 @@ First, we can make a function that does one test of Ceva's using random points:
 
         # Check Ceva's!
         # If Ceva's Theorem is true (which it is), the following should always be True.
-        return dist(A,F)/dist(F,B)*dist(B,D)/dist(D,C)*dist(C,E)/dist(E,A) == 1
+        return isclose(dist(A,F)/dist(F,B)*dist(B,D)/dist(D,C)*dist(C,E)/dist(E,A), 1)
 
 Now, let's just run that function some large number of times:
 
@@ -50,6 +50,6 @@ and as expected...
 
 .. code-block::
 
-    10000 out of 100000 matched the expected outcome
+    10000 out of 10000 matched the expected outcome
 
 As you can see, Ceva's theorem does seem to be true! (Alternatively, if you look at it from the perspective of a geometer, these tests have told us that pygeo2d is unlikely to be flawed.)

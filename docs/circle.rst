@@ -26,7 +26,7 @@ Circle
 
         >>> a = Circle(Point(0, 0), 5)
         >>> a
-        Circle(center=(0, 0), radius=5)
+        Circle(center=Point(0, 0), radius=5)
 
         :return: string representation of this circle
 

@@ -60,7 +60,7 @@
 
     <span class="c1"># Check Ceva&#39;s!</span>
     <span class="c1"># If Ceva&#39;s Theorem is true (which it is), the following should always be True.</span>
-    <span class="k">return</span> <span class="n">dist</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">F</span><span class="p">)</span><span class="o">/</span><span class="n">dist</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">dist</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="n">dist</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">dist</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">E</span><span class="p">)</span><span class="o">/</span><span class="n">dist</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="n">A</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">isclose</span><span class="p">(</span><span class="n">dist</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">F</span><span class="p">)</span><span class="o">/</span><span class="n">dist</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="n">dist</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="n">dist</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">dist</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">E</span><span class="p">)</span><span class="o">/</span><span class="n">dist</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="n">A</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now, let’s just run that function some large number of times:</p>
@@ -74,7 +74,7 @@
 </pre></div>
 </div>
 <p>and as expected…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10000</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">100000</span> <span class="n">matched</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">outcome</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10000</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">10000</span> <span class="n">matched</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">outcome</span>
 </pre></div>
 </div>
 <p>As you can see, Ceva’s theorem does seem to be true! (Alternatively, if you look at it from the perspective of a geometer, these tests have told us that pygeo2d is unlikely to be flawed.)</p>
